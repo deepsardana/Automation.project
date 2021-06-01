@@ -19,4 +19,9 @@ echo -e "\e[37maws bucket formation. \e[0m"
 aws s3 mb s3://deepupgrad
 echo -e "\e[37m copy achrive into $s3 bucket. \e[0m"
 aws s3 cp /tmp/Deep-httpd-logs-010621-180001 s3://deepupgrad
-echo `date`
+echo  "creating a cron job"
+touch /etc/cron.d/automation
+        #this cron job will execute on every day at 12:00 
+        echo "* 12 * * * root  /root/automation.project/automation.sh" >>  /etc/cron.d/automation
+echo -e "\e[37mEND PROJECT. \e[0m"
+date
